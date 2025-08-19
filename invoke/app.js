@@ -6,6 +6,13 @@ const groq = new Groq({
 
 async function main() {
     const completion = await groq.chat.completions.create({
+        temperature: 1,
+        // top_p: 0.2,
+        // stop: "ga",
+        // max_completion_tokens: 1000,
+        // max_tokens: "",
+        // frequency_penalty: 1,
+        // presence_penalty: 1,
         model: process.env.LLM_MODEL,
         messages: [
             {
