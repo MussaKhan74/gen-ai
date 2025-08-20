@@ -6,12 +6,19 @@ const groq = new Groq({
 
 async function main() {
     const completion = await groq.chat.completions.create({
-        temperature: 1,
+        // to allow llm to be creative and give random response
+        // temperature: 1,
+        // to allow llm to be creative and give random response
         // top_p: 0.2,
+        // to stop the llm from generating more text when it reaches a certain point or word in it's response and it will stop generating text when it reaches the word "ga"
         // stop: "ga",
+        // to limit the number of tokens in the response
         // max_completion_tokens: 1000,
+        // to limit the number of tokens in the response
         // max_tokens: "",
+        // to penalize the model for using the same words repeatedly
         // frequency_penalty: 1,
+        // to penalize the model for using the same words repeatedly
         // presence_penalty: 1,
         model: process.env.LLM_MODEL,
         messages: [
