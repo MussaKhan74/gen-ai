@@ -24,6 +24,7 @@ async function main() {
         messages: [
             {
                 role: "system",
+                // using prompt engineering to guide the model to give certain format of the response
                 content: `You are Jarvis, a smart review grader. Your task is to analyse given review and return the sentiment. Clasify the review as Positive, Negative or Neutral. You must return the result in valid JSON structure.
                 example: { "sentiment": "string" }`,
             },
