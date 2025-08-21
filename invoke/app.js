@@ -20,6 +20,8 @@ async function main() {
         // frequency_penalty: 1,
         // to penalize the model for using the same words repeatedly
         // presence_penalty: 1,
+        // to set the out of the response send by the llm
+        response_format: { type: "json_object" },
         model: process.env.LLM_MODEL,
         messages: [
             {
