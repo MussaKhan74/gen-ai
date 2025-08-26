@@ -1,0 +1,17 @@
+{
+    "name": "rag",
+    "module": "rag.js",
+    "type": "module",
+    "devDependencies": {
+        "@types/bun": "latest"
+    },
+    "peerDependencies": {
+        "typescript": "^5"
+    },
+    "dependencies": {
+        "@langchain/community": "^0.3.53",
+        "@langchain/core": "^0.3.72",
+        "@langchain/textsplitters": "^0.1.0",
+        "pdf-parse": "^1.1.1"
+    }
+}
