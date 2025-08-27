@@ -3,8 +3,8 @@
  * Stage 1: Indexing
  * 1. Load the document - pdf, text - Complete
  * 2. Chunk the document - Complete
- * 3. Generate vector embeddings
- * 4. Store the embeddings in a vector database
+ * 3. Generate vector embeddings - Complete
+ * 4. Store the embeddings in a vector database - Complete
  *
  * Stage 2: Using the chatbot
  * 1. Setup LLM
