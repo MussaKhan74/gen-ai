@@ -1,0 +1,17 @@
+{
+  "name": "react-agent",
+  "module": "agent.js",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@langchain/core": "^0.3.72",
+    "@langchain/groq": "^0.2.3",
+    "@langchain/langgraph": "^0.4.8",
+    "@langchain/tavily": "^0.1.5"
+  }
+}
