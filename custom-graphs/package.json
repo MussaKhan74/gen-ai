@@ -1,0 +1,14 @@
+{
+  "name": "custom-graphs",
+  "module": "biryaniGraph.js",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@langchain/langgraph": "^0.4.8"
+  }
+}
