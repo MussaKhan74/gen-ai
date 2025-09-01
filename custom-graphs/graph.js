@@ -8,11 +8,22 @@
 import readline from "node:readline/promises";
 import { tool } from "@langchain/core/tools";
 import { ChatGroq } from "@langchain/groq";
-import { MessagesAnnotation, StateGraph } from "@langchain/langgraph";
+import {
+  END,
+  MemorySaver,
+  MessagesAnnotation,
+  StateGraph,
+} from "@langchain/langgraph";
 import { ToolNode } from "@langchain/langgraph/prebuilt";
 import { TavilySearch } from "@langchain/tavily";
 import z from "zod";
 import { printGraph } from "./utils";
+
+/**
+ * Memory
+ */
+
+const checkpointer = new MemorySaver();
 
 /**
  * Tools
@@ -89,11 +100,16 @@ const graph = new StateGraph(MessagesAnnotation)
   .addNode("tools", toolNode)
   .addEdge("__start__", "llm")
   .addEdge("tools", "llm")
-  .addConditionalEdges("llm", shouldContinue);
+  .addConditionalEdges("llm", shouldContinue, {
+    __end__: END,
+    tools: "tools",
+  });
 
-const app = graph.compile();
+const app = graph.compile({ checkpointer });
 
 async function main() {
+  const config = { configurable: { thread_id: "1" } };
+
   /**
    * Print the graph
    */
@@ -115,9 +131,12 @@ async function main() {
       break;
     }
 
-    const result = await app.invoke({
-      messages: [{ role: "user", content: userInput }],
-    });
+    const result = await app.invoke(
+      {
+        messages: [{ role: "user", content: userInput }],
+      },
+      config
+    );
 
     //   console.log("result: ", result);
     const messages = result.messages;
