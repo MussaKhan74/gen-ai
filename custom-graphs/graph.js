@@ -5,6 +5,7 @@
  * 4. Add the memory
  */
 
+import readline from "node:readline/promises";
 import { tool } from "@langchain/core/tools";
 import { ChatGroq } from "@langchain/groq";
 import { MessagesAnnotation, StateGraph } from "@langchain/langgraph";
@@ -98,17 +99,34 @@ async function main() {
    */
   await printGraph(app, "./customGraph.png");
 
-  const result = await app.invoke({
-    messages: [
-      { role: "user", content: "What is the current weather in Multan?" },
-    ],
+  /**
+   * Take user input
+   */
+
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
   });
 
-  //   console.log("result: ", result);
-  const messages = result.messages;
-  const final = messages[messages.length - 1];
+  while (true) {
+    const userInput = await rl.question("You: ");
 
-  console.log("AI: ", final.content);
+    if (userInput === "/bye") {
+      break;
+    }
+
+    const result = await app.invoke({
+      messages: [{ role: "user", content: userInput }],
+    });
+
+    //   console.log("result: ", result);
+    const messages = result.messages;
+    const final = messages[messages.length - 1];
+
+    console.log("AI: ", final.content);
+  }
+
+  rl.close();
 }
 
 main();
