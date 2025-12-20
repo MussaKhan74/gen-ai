@@ -11,6 +11,6 @@
     "license": "ISC",
     "description": "",
     "dependencies": {
-        "groq-sdk": "^0.30.0"
+        "groq-sdk": "^0.37.0"
     }
 }
