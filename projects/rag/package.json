@@ -9,8 +9,8 @@
         "typescript": "^5"
     },
     "dependencies": {
-        "@langchain/community": "^0.3.53",
-        "@langchain/core": "^0.3.72",
+        "@langchain/community": "^1.0.0",
+        "@langchain/core": "^1.1.7",
         "@langchain/openai": "^0.6.9",
         "@langchain/pinecone": "^0.2.0",
         "@langchain/textsplitters": "^0.1.0",
